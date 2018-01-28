@@ -18,14 +18,14 @@ class Solution {
         	}else{
         		l2 = l2.next;
         	}
-        	if(l1 == null){
-        		ans.next = l2;
-        		break;
-        	}else if(l2 == null){
-        		ans.next  =l1;
-        		break;
-        	}
         }
+        if(l1 == null){
+    		ans.next = l2;
+    		
+    	}else if(l2 == null){
+    		ans.next  =l1;
+    		
+    	}
         return ans1.next;
     }
     public static void main(String [] args){
