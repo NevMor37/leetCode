@@ -18,10 +18,10 @@ public class Solution {
           while(j>=0){
         	  nums1[k--] = nums2[j--];
           }
-          /*
+          
           for(int q=0;q<m+n;q++){
         	  System.out.println(nums1[q]);
-          }*/
+          }
 	}
     public static void main(String [] args){
     	 int [] nums1 = new int [] {
