@@ -1,36 +1,47 @@
 
 public class Solution {
 	public String countAndSay(int n) {
-		if(n == 0){
-			 return "";
+		int i = 1;
+		String res = "1";
+		StringBuilder sb = new StringBuilder();
+		int count = 0;
+		while (i < n) {
+			i++;
+			char value = res.charAt(0);
+			for (int j = 0; j < res.length(); j++) {
+				if (value == res.charAt(j)) {
+					count++;
+					if (j == res.length()-1) {
+						sb.append(count);
+						sb.append(value);
+						res = sb.toString();
+						sb = new StringBuilder();
+						System.out.println(res);
+						count = 0;
+						break;
+					}
+				} else {
+					sb.append(count);
+					sb.append(value);
+					if (j == res.length()-1) {
+						sb.append(1);
+						sb.append(res.charAt(j));
+						res = sb.toString();
+						sb = new StringBuilder();
+						System.out.println(res);
+						count =0;
+						break;
+					}
+					count = 1;
+					value = res.charAt(j);
+				}
+			}
 		}
-		else if(n == 1){
-			return "1";
-		}
-        StringBuilder ans = new StringBuilder("1");
-          
-          for(int i = 1;i<n;i++){
-        	  String prev = ans.toString();
-        	  ans = new StringBuilder();
-        	  char say = prev.charAt(0);
-        	  int count =0;
-        	  for(int j = 0;j<prev.length();j++){
-        		  if(say == prev.charAt(j)){
-        			  count++;
-        		  }else{
-        			  ans.append(count);
-        			  ans.append(say);
-        			  say = prev.charAt(j);
-        			  count = 1;
-        		  }
-        	  }
-        	  ans.append(count);
-        	  ans.append(say);      	  
-          }
-          return ans.toString();
+		return res;
 	}
-	public static void main(String [] args){
+
+	public static void main(String[] args) {
 		Solution obj = new Solution();
-		System.out.println(obj.countAndSay(6));
+		obj.countAndSay(6);
 	}
 }
